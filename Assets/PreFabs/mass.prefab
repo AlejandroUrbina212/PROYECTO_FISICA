@@ -21,11 +21,12 @@ GameObject:
   - component: {fileID: 4778347604766538}
   - component: {fileID: 33940463776661542}
   - component: {fileID: 23130801100935566}
-  - component: {fileID: 135339840800496798}
   - component: {fileID: 54245746297857256}
+  - component: {fileID: 65431135673312578}
+  - component: {fileID: 222297888867056386}
   m_Layer: 0
   m_Name: mass
-  m_TagString: Untagged
+  m_TagString: mass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395575621712106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1.02, z: 0}
-  m_LocalScale: {x: 0.3641641, y: 0.3641641, z: 0.3641641}
+  m_LocalPosition: {x: 3.5, y: 1.25, z: 0}
+  m_LocalScale: {x: 0.37508902, y: 0.4212625, z: 0.37508902}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -84,7 +85,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395575621712106}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54245746297857256
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -98,17 +99,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
---- !u!135 &135339840800496798
-SphereCollider:
+--- !u!65 &65431135673312578
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1395575621712106}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 36818e843740db746923b3e01caa4288, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!222 &222297888867056386
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1395575621712106}
+  m_CullTransparentMesh: 1
