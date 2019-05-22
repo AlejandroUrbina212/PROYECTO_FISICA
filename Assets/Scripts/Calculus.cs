@@ -73,12 +73,12 @@ public class Calculus : MonoBehaviour {
         float massToAdd = float.Parse(massInput.text);
         if (positionValue < 0.5)
         {
-            GameObject newMass = Instantiate(mass, new Vector3((-5 + (10 * positionValue)), 1.33f, 0f), Quaternion.identity);
+            GameObject newMass = Instantiate(mass, new Vector3((-5 + (10 * positionValue)), 2f, 0f), Quaternion.identity);
             newMass.GetComponent<Rigidbody>().mass = massToAdd;
         }
         if (positionValue >= 0.5)
         {
-            GameObject newMass = Instantiate(mass, new Vector3(5 * positionValue, 1.33f, -0.08f), Quaternion.identity);
+            GameObject newMass = Instantiate(mass, new Vector3(5 * positionValue, 2f, -0.08f), Quaternion.identity);
             newMass.GetComponent<Rigidbody>().mass = massToAdd;
         }
     }
