@@ -15,11 +15,15 @@ public class Calculus : MonoBehaviour {
     public Text showPosition;
     public Text massCenter;
     public Texture TargetTexture;
+    private Vector3 barPosition;
+    private Vector3 barRotation;
 
     // Use this for initialization
     void Start () {
         allMass = GameObject.FindGameObjectsWithTag("mass");
         cm.value = 0.5f;
+        barRotation = GameObject.Find("Barra").transform.rotation.eulerAngles;
+        barPosition = GameObject.Find("Barra").transform.position;
     }
 	
 	// Update is called once per frame
@@ -50,11 +54,17 @@ public class Calculus : MonoBehaviour {
         float pos = position_;
         while(position_ > 0)
         {
-            toReturn += "---------------";
+            toReturn += "------------";
             toShowPosition += "       ";
             position_ -= 1f;
         }
         showPosition.text = (toReturn + "\n" + toShowPosition + "x = " + pos);
+
+        // Reset the bar to the initial position if it is rotating to much
+        if (GameObject.Find("Barra").transform.rotation.eulerAngles != barRotation ){
+            GameObject.Find("Barra").GetComponent<Rigidbody>().position = barPosition;
+            Debug.Log("Recalculando");
+        }
     }
 
     public void CreateMass()
