@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Calculus : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class Calculus : MonoBehaviour {
     public Texture TargetTexture;
     private Vector3 barPosition;
     private Vector3 barRotation;
+  
 
     // Use this for initialization
     void Start () {
@@ -65,6 +67,7 @@ public class Calculus : MonoBehaviour {
             GameObject.Find("Barra").GetComponent<Rigidbody>().position = barPosition;
             Debug.Log("Recalculando");
         }
+        
     }
 
     public void CreateMass()
@@ -91,5 +94,10 @@ public class Calculus : MonoBehaviour {
             Vector3 rect = Camera.main.WorldToScreenPoint(allMass[i].GetComponent<Rigidbody>().transform.position);
             GUI.TextField(new Rect(rect.x - 35 / 2, Screen.height - rect.y - 35 / 2, 50, 50), "\n"+allMass[i].GetComponent<Rigidbody>().mass + "kg\n" + (allMass[i].GetComponent<Rigidbody>().transform.position.x+5) +"m");
         }
+    }
+
+    public void LoadScene(string _sceneName)
+    {
+        SceneManager.LoadScene(_sceneName);
     }
 }
