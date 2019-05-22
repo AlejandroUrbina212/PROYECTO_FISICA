@@ -18,6 +18,7 @@ public class Calculus : MonoBehaviour {
     public Texture TargetTexture;
     private Vector3 barPosition;
     private Vector3 barRotation;
+    private GameObject bar;
   
 
     // Use this for initialization
@@ -73,17 +74,26 @@ public class Calculus : MonoBehaviour {
     public void CreateMass()
     {
         float positionValue = position.value;
-        float massToAdd = float.Parse(massInput.text);
-        if (positionValue < 0.5)
+        if (position.value <= 0)
         {
-            GameObject newMass = Instantiate(mass, new Vector3((-5 + (10 * positionValue)), 2f, 0f), Quaternion.identity);
-            newMass.GetComponent<Rigidbody>().mass = massToAdd;
+            Debug.Log("MASA INVALIDA");
+
         }
-        if (positionValue >= 0.5)
+        else
         {
-            GameObject newMass = Instantiate(mass, new Vector3(5 * positionValue, 2f, -0.08f), Quaternion.identity);
-            newMass.GetComponent<Rigidbody>().mass = massToAdd;
+            float massToAdd = float.Parse(massInput.text);
+            if (positionValue < 0.5)
+            {
+                GameObject newMass = Instantiate(mass, new Vector3((-5 + (10 * positionValue)), 2f, 0f), Quaternion.identity);
+                newMass.GetComponent<Rigidbody>().mass = massToAdd;
+            }
+            if (positionValue >= 0.5)
+            {
+                GameObject newMass = Instantiate(mass, new Vector3(5 * positionValue, 2f, -0.08f), Quaternion.identity);
+                newMass.GetComponent<Rigidbody>().mass = massToAdd;
+            }
         }
+        
     }
 
     private void OnGUI()
@@ -94,6 +104,12 @@ public class Calculus : MonoBehaviour {
             Vector3 rect = Camera.main.WorldToScreenPoint(allMass[i].GetComponent<Rigidbody>().transform.position);
             GUI.TextField(new Rect(rect.x - 35 / 2, Screen.height - rect.y - 35 / 2, 50, 50), "\n"+allMass[i].GetComponent<Rigidbody>().mass + "kg\n" + (allMass[i].GetComponent<Rigidbody>().transform.position.x+5) +"m");
         }
+
+        bar = GameObject.FindGameObjectWithTag("bar");
+        Vector3 rect2 = Camera.main.WorldToScreenPoint(new Vector3((cm.value*10)-5, 1, 0));
+        GUI.TextField(new Rect(rect2.x - 35 / 2, Screen.height - rect2.y - 35 / 2, 50, 50), "\n" + bar.GetComponent<Rigidbody>().mass + "kg\n" + (cm.value*10) + "m");
+
+
     }
 
     public void LoadScene(string _sceneName)
